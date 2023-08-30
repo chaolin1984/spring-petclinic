@@ -32,14 +32,14 @@ pipeline {
     
 // CD
 
-        stage("Upload"){
-            steps{
-                dir("./"){
-                withAWS(region:"ap-southeast-2", credentials:"jenkins_aws"){
-                    // s3Delete(bucket: "${env.UATS3BucketName}", path:'**/*')
-                    s3Upload(bucket: "techscrum-frontend-jr10", workingDir:'build', includePathPattern:'**/*');
-                    }
-                } 
+        stage("upload file to EC2"){
+            steps {
+                sshagent(credentials: ['jenkins-aws']) {
+                  sh '''
+                      scp -o StrictHostKeyChecking=no target/*.jar ubuntu@3.25.224.162:/opt/webapps/
+                  '''
+                }
+            }
             }   
         }
     }
