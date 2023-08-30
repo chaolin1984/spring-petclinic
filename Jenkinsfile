@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sshagent(credentials: ['jenkins-aws']) {
                   sh '''
-                      scp -o StrictHostKeyChecking=no target/*.jar ubuntu@3.25.224.162:/opt/webapps/
+                      scp -o StrictHostKeyChecking=no target/*.jar ubuntu@3.25.224.162:/home/ubuntu
                   '''
                 }
             }
