@@ -37,6 +37,7 @@ pipeline {
                 sshagent(credentials: ['jenkins-aws']) {
                   sh '''
                       scp -o StrictHostKeyChecking=no target/*.jar ubuntu@3.25.224.162:/home/ubuntu
+                      ssh ubuntu@3.25.224.162 'java -jar /home/ubuntu/*.jar'
                   '''
                 }
             }
