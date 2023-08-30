@@ -9,7 +9,7 @@ pipeline {
             steps{
                 // Get source code from a GitHub repository
                 
-                git branch:'main', credentialsId:'jenkins-node-private-key', url:'git@github.com:chaolin1984/spring-petclinic.git'
+                git branch:'main', credentialsId:'github-cred', url:'git@github.com:chaolin1984/spring-petclinic.git'
             
             }
         }
